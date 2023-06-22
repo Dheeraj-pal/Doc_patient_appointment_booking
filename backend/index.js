@@ -12,6 +12,10 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.get("/", (req, res) => {
+  res.send("Welcome to MEDPREP");
+});
+
 app.use("/user", userRouter);
 
 app.use("/doctor", doctorRouter);
@@ -19,10 +23,6 @@ app.use("/doctor", doctorRouter);
 app.use(authenticateToken);
 
 app.use("/meeting", meetingRouter);
-
-app.get("/", (req, res) => {
-  res.send("Server is Working");
-});
 
 app.listen(PORT, async () => {
   try {
