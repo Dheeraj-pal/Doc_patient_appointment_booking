@@ -104,10 +104,12 @@ label {
   border-radius: 5px;
   border: 1px solid #ccc;
 }
-
+#symptoms{
+  resize: vertical;
+}
 .form-btn {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #f4735c;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -116,7 +118,7 @@ label {
 }
 
 .form-btn:hover{
-    background-color: #0056b3;
+    background-color: #C65946;
 }
 
 .col-left {

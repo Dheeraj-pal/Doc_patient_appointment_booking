@@ -7,28 +7,34 @@ const KEY = process.env.KEY;
 
 const userRouter = express.Router();
 
-// Middleware to hash the password
-const hashPassword = async (password) => {
-  const hashedPassword = await bcrypt.hash(password, 10);
-  return hashedPassword;
-};
 
 // User Registration
 userRouter.post("/register", async (req, res) => {
-  const { password, email, name, age } = req.body;
+  const { password, email, name, age, gender } = req.body;
   try {
-    const hashedPassword = await hashPassword(password);
-    const user = new userModel({
-      name,
-      email,
-      age,
-      password: hashedPassword,
-    });
-    await user.save();
-    res.send({ message: "User Registered Successfully" });
+    const isPresent = await userModel.find({ email });
+
+    if (isPresent.length === 0) {
+      // encrypte password and register
+      bcrypt.hash(password, 5, async (err, hash) => {
+        if (err) res.status(401).json({ "errow ": err.message });
+        else {
+          const newUser = new userModel({
+            name,
+            email,
+            password: hash,
+            age,
+            gender,
+          });
+          await newUser.save();
+          res.status(200).json({ success: "user registered successfully" });
+        }
+      });
+    } else {
+      res.status(404).json({ msg: "user already registered" });
+    }
   } catch (error) {
-    console.log({ Error: error.message });
-    res.status(500).send({ Error: "Registration failed" });
+    res.status(500).json({ msg: error.message });
   }
 });
 

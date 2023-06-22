@@ -37,15 +37,25 @@
       <div class="forms">
         <form id="patient-form" class="form active">
           <h2>Patient Login</h2>
-          <input type="email" placeholder="Email" required />
-          <input type="password" placeholder="Password" required />
+          <input type="email" id="patientEmail" placeholder="Email" required />
+          <input
+            type="password"
+            id="patientPassword"
+            placeholder="Password"
+            required
+          />
           <button type="submit">Login</button>
         </form>
 
         <form id="doctor-form" class="form">
           <h2>Doctor Login</h2>
-          <input type="email" placeholder="Email" required />
-          <input type="password" placeholder="Password" required />
+          <input type="email" id="docEmail" placeholder="Email" required />
+          <input
+            type="password"
+            id="docPassword"
+            placeholder="Password"
+            required
+          />
           <button type="submit">Login</button>
         </form>
       </div>
@@ -62,27 +72,4 @@
   crossorigin="anonymous"
 ></script>
 
-<script>
-  function changeTab(tab) {
-    var patientForm = document.getElementById("patient-form");
-    var doctorForm = document.getElementById("doctor-form");
-    var patientTab = document.getElementById("patient-tab");
-    var doctorTab = document.getElementById("doctor-tab");
-
-    if (tab === "patient") {
-      patientForm.classList.add("active");
-      doctorForm.classList.remove("active");
-      patientTab.classList.add("active");
-      doctorTab.classList.remove("active");
-    } else if (tab === "doctor") {
-      patientForm.classList.remove("active");
-      doctorForm.classList.add("active");
-      patientTab.classList.remove("active");
-      doctorTab.classList.add("active");
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    changeTab("patient");
-  });
-</script>
+<script src="./scripts/login.js"></script>

@@ -28,7 +28,7 @@ app.listen(PORT, async () => {
   try {
     await connection;
     console.log("Connected to db");
-    console.log("Server Running on port " + 9000);
+    console.log("Server Running on port " + PORT);
   } catch (error) {
     console.log("Error while connecting to DB");
   }

@@ -4,8 +4,13 @@ const meetSchema = mongoose.Schema(
   {
     doctorId: { type: mongoose.Schema.Types.ObjectId, ref: "Doctor" },
     patientId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-    startTime: Date,
-    endTime: Date,
+    dateAndTime: Date,
+    patientName: String,
+    patientEmail: String,
+    contact: String,
+    specialization: String,
+    doctorName: String,
+    symptoms: String,
   },
   {
     versionKey: false,

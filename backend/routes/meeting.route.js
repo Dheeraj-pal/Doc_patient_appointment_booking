@@ -8,7 +8,17 @@ const meetingRouter = express.Router();
 // Schedule a meeting/appointment
 meetingRouter.post("/schedule", async (req, res) => {
   try {
-    const { doctorId, patientId, startTime, endTime } = req.body;
+    const {
+      doctorId,
+      patientId,
+      patientName,
+      doctorName,
+      patientEmail,
+      dateAndTime,
+      contact,
+      specialization,
+      symptoms,
+    } = req.body;
 
     const doctor = await doctorModel.findById(doctorId);
     if (!doctor) {
@@ -23,8 +33,13 @@ meetingRouter.post("/schedule", async (req, res) => {
     const newMeeting = new meetModel({
       doctorId: doctorId,
       patientId: patientId,
-      startTime,
-      endTime,
+      patientName,
+      doctorName,
+      patientEmail,
+      dateAndTime,
+      contact,
+      specialization,
+      symptoms,
     });
 
     await newMeeting.save();

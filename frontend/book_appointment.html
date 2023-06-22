@@ -71,12 +71,12 @@
                 required
               >
                 <option value="">Select Specialization</option>
-                <option value="dog">Neurology</option>
-                <option value="cat">Orthopedics</option>
-                <option value="cat">Urology</option>
-                <option value="cat">Pathology</option>
-                <option value="cat">Pediatrics</option>
-                <option value="cat">Psychiatry</option>
+                <option value="Neurology">Neurology</option>
+                <option value="Orthopedics">Orthopedics</option>
+                <option value="Urology">Urology</option>
+                <option value="Pathology">Pathology</option>
+                <option value="Pediatrics">Pediatrics</option>
+                <option value="Psychiatry">Psychiatry</option>
               </select>
             </div>
 
@@ -84,10 +84,6 @@
               <label for="doctor">Doctor Name</label>
               <select name="doctor" id="doctor" class="form-control" required>
                 <option value="">Select doctor</option>
-                <option value="pardeep gupta">Dr. Pardeep Gupta</option>
-                <option value="subhash mittal">Dr. Subhash Mittal</option>
-                <option value="gaurav sharma">Dr. Gaurav Sharma</option>
-                <option value="vivek jindal">Dr. Vivek Jindal</option>
               </select>
             </div>
 
@@ -98,11 +94,16 @@
 
             <div class="form-group">
               <label for="symptoms">Symptoms</label>
-              <textarea id="symptoms" class="form-control" required></textarea>
+              <textarea
+                rows="4"
+                id="symptoms"
+                class="form-control"
+                required
+              ></textarea>
             </div>
 
             <div class="form-group justify-content-end">
-              <button class="form-btn" type="submit">Book Now</button>
+              <button class="form-btn" id="form" type="submit">Book Now</button>
             </div>
           </form>
         </div>

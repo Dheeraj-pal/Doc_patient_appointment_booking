@@ -5,6 +5,17 @@ const { doctorModel } = require("../model/doctor.model");
 
 const doctorRouter = express.Router();
 
+doctorRouter.get("/", async (req, res) => {
+  try {
+    const doctors = await doctorModel.find();
+    if (doctors) {
+      res.send(doctors);
+    }
+  } catch (error) {
+    res.status(500).send({ error: "Error while getting doctors" });
+  }
+});
+
 //Get Doctor by ID
 doctorRouter.get("/getDoctorID", async (req, res) => {
   try {
@@ -69,7 +80,7 @@ doctorRouter.post("/login", async (req, res) => {
     const token = jwt.sign({ id: doctor._id }, "your-secret-key", {
       expiresIn: "1h",
     });
-    res.json({ token });
+    res.json({ message: "Login Successful", token, doctor });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });
