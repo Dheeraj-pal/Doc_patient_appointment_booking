@@ -11,7 +11,7 @@
       <nav>
         <div class="logo"><a href="index.html">MEDPREP</a></div>
         <ul class="menu">
-          <li><a href="#">View Appointments</a></li>
+          <li><a href="view_appointment.html">View Appointments</a></li>
           <li><a href="book_appointment.html">Book Appointments</a></li>
           <li class="submenu">
             <a href="#"><i class="fa-solid fa-circle-user fa-lg"></i></a>
@@ -43,3 +43,9 @@
   src="https://kit.fontawesome.com/e5a9c90922.js"
   crossorigin="anonymous"
 ></script>
+
+<script>
+  document.querySelector(".booking-button").addEventListener("click", () => {
+    window.location.href = "book_appointment.html";
+  });
+</script>

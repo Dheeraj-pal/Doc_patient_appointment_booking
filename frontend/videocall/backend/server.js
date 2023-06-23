@@ -1,35 +1,29 @@
 require("dotenv").config();
 const express = require("express");
 const { Server } = require("socket.io");
-const http = require("http");
 const cors = require("cors");
 
 const app = express();
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+const PORT = process.env.PORT || 3000;
 
-const httpServer = http.createServer(app);
+app.use(cors());
 
 app.get("/start", (req, res) => {
-  res.send("Welcome To WrokDesk Video Server");
+  res.send("Welcome To WorkDesk Video Server");
 });
 
-httpServer.listen(process.env.PORT, () => {
-  console.log(`Server started at ` + process.env.PORT);
+const server = app.listen(PORT, () => {
+  console.log(`Server started at http://localhost:${PORT}`);
 });
 
-const io = new Server(httpServer, {
+const io = new Server(server, {
   cors: {
     origin: "*",
   },
 });
 
 io.on("connection", (socket) => {
-  socket.on("join-room", (RoomID, userID) => {
-    // const {RoomID,userID} = data
+  socket.on("join-room", ({ RoomID, userID }) => {
     console.log(RoomID, userID);
     socket.join(RoomID);
     socket.to(RoomID).emit("user-join", userID);

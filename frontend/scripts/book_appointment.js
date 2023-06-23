@@ -102,6 +102,9 @@ document.getElementById("form").addEventListener("click", (e) => {
     ) {
       alert("Please fill all the details");
     } else {
+      const roomId = generateRandomId();
+      console.log(roomId);
+
       let payload = {
         patientName,
         doctorName,
@@ -112,6 +115,7 @@ document.getElementById("form").addEventListener("click", (e) => {
         contact,
         specialization,
         symptoms,
+        roomId,
       };
 
       console.log(JSON.stringify(payload));
@@ -135,3 +139,10 @@ document.getElementById("form").addEventListener("click", (e) => {
     }
   }
 });
+
+function generateRandomId() {
+  const timestamp = Date.now().toString(36);
+  const randomString = Math.random().toString(36).substr(2, 5);
+  const roomId = timestamp + randomString;
+  return roomId;
+}

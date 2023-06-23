@@ -5,6 +5,16 @@ const { userModel } = require("../model/user.model");
 
 const meetingRouter = express.Router();
 
+//get all meetings
+meetingRouter.get("/", async (req, res) => {
+  try {
+    const meetings = await meetModel.find();
+    res.send(meetings);
+  } catch (error) {
+    res.status(500).send({ message: "cannot retrieve all meeting data" });
+  }
+});
+
 // Schedule a meeting/appointment
 meetingRouter.post("/schedule", async (req, res) => {
   try {
@@ -18,6 +28,7 @@ meetingRouter.post("/schedule", async (req, res) => {
       contact,
       specialization,
       symptoms,
+      roomId,
     } = req.body;
 
     const doctor = await doctorModel.findById(doctorId);
@@ -40,6 +51,7 @@ meetingRouter.post("/schedule", async (req, res) => {
       contact,
       specialization,
       symptoms,
+      roomId,
     });
 
     await newMeeting.save();

@@ -92,7 +92,7 @@ nav {
 }
 
 .tab {
-  background-color: #007bff;
+  background-color: #f4735c;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -103,7 +103,7 @@ nav {
 }
 
 .tab:hover {
-  background-color: #0056b3;
+  background-color: #E7433E;
 }
 .forms {
   position: relative;
@@ -144,7 +144,7 @@ button[type="submit"] {
   width: 100%;
   padding: 10px;
   font-size: 18px;
-  background-color: #007bff;
+  background-color: #f4735c;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -152,7 +152,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: #E7433E;
 }
 
 /* --------------------------------- FOOTER --------------------------------- */

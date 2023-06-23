@@ -11,6 +11,7 @@ const meetSchema = mongoose.Schema(
     specialization: String,
     doctorName: String,
     symptoms: String,
+    roomId: String,
   },
   {
     versionKey: false,

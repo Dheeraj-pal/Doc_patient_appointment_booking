@@ -2,10 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/index.css" />
-    <title>MEDPREP | Meet</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/view_appointment.css" />
   </head>
   <body>
     <header>
@@ -25,31 +24,41 @@
       </nav>
     </header>
 
-    <div class="container">
-      <div class="left-content">
-        <h1>MEDPREP Virtual Meet</h1>
-        <input type="text" placeholder="Room ID" id="roomIDInput" />
-        <button id="joinRoomBtn">Connect</button>
-      </div>
-      <div class="right-content">
-        <img src="./images/background img.avif" width="90%" alt="Image" />
+    <div id="mainsection">
+      <h1>View Appointments</h1>
+
+      <div class="table-container">
+        <table class="appointments-table">
+          <thead>
+            <tr>
+              <th>Doctor Name</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Room ID</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="appointments-body">
+            <!-- Appointments data will be dynamically added here -->
+          </tbody>
+        </table>
       </div>
     </div>
 
     <footer>
       <p>&copy; 2023 MEDPREP. All rights reserved.</p>
     </footer>
-
-    <script
-      src="https://cdn.socket.io/4.5.4/socket.io.min.js"
-      integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI"
-      crossorigin="anonymous"
-    ></script>
-    <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>
+
+<script src="./scripts/view_appointment.js"></script>
+
 <script
   src="https://kit.fontawesome.com/e5a9c90922.js"
   crossorigin="anonymous"
 ></script>
 
+
+<script>
+  
+</script>
