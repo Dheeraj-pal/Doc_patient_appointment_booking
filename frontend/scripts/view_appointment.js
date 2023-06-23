@@ -22,7 +22,7 @@ function generateAppointmentRow(appointment) {
   `;
 }
 
-fetch("http://localhost:9000/meeting", {
+fetch("https://medprepbackend-production.up.railway.app/meeting", {
   method: "GET",
   headers: {
     "Content-Type": "application/json",

@@ -33,7 +33,7 @@ document.getElementById("patient-form").addEventListener("submit", (e) => {
     password,
   };
 
-  fetch("http://localhost:9000/user/login", {
+  fetch("https://medprepbackend-production.up.railway.app/user/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -62,7 +62,7 @@ document.getElementById("doctor-form").addEventListener("submit", (e) => {
     password,
   };
 
-  fetch("http://localhost:9000/doctor/login", {
+  fetch("https://medprepbackend-production.up.railway.app/doctor/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -74,7 +74,14 @@ document.getElementById("doctor-form").addEventListener("submit", (e) => {
       if (data) {
         console.log(data);
         localStorage.setItem("doc-detail", JSON.stringify(data));
+        if (data) {
+          alert("login successful");
+          window.location.href = "../index.html";
+        }
       }
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      alert("wrong credentials");
+    });
 });

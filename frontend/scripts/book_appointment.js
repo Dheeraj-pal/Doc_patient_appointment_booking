@@ -3,7 +3,7 @@ const selectDoctor = document.getElementById("doctor");
 let patient = JSON.parse(localStorage.getItem("user-detail")) || null;
 
 // Fetch all doctors from the server
-fetch("http://localhost:9000/doctor")
+fetch("https://medprepbackend-production.up.railway.app/doctor")
   .then((res) => res.json())
   .then((data) => {
     populateDoctorOptions(data);
@@ -52,7 +52,7 @@ function filterDoctorsBySpecialization(doctors, specialization) {
 }
 let docId;
 function getDocId(name) {
-  fetch("http://localhost:9000/doctor/getDoctorID", {
+  fetch("https://medprepbackend-production.up.railway.app/doctor/getDoctorID", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -120,7 +120,7 @@ document.getElementById("form").addEventListener("click", (e) => {
 
       console.log(JSON.stringify(payload));
 
-      fetch("http://localhost:9000/meeting/schedule", {
+      fetch("https://medprepbackend-production.up.railway.app/meeting/schedule", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

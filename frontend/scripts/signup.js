@@ -42,7 +42,7 @@ document.getElementById("patientform").addEventListener("submit", async (e) => {
 
   console.log(patientPayload);
 
-  await fetch("http://localhost:9000/user/register", {
+  await fetch("https://medprepbackend-production.up.railway.app/user/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -85,7 +85,7 @@ document.getElementById("doctorform").addEventListener("submit", async (e) => {
 
   console.log(docPayload);
 
-  await fetch("http://localhost:9000/doctor/register", {
+  await fetch("https://medprepbackend-production.up.railway.app/doctor/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
