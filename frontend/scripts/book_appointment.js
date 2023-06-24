@@ -77,7 +77,7 @@ selectDoctor.addEventListener("change", (e) => {
 document.getElementById("form").addEventListener("click", (e) => {
   e.preventDefault();
 
-  if (!patient) {
+  if (!patient.message == "Login Successful") {
     alert("Please Login First");
   } else {
     let token = patient.token;
@@ -120,19 +120,22 @@ document.getElementById("form").addEventListener("click", (e) => {
 
       console.log(JSON.stringify(payload));
 
-      fetch("https://medprepbackend-production.up.railway.app/meeting/schedule", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `bearer ${token}`,
-        },
-        body: JSON.stringify(payload),
-      })
+      fetch(
+        "https://medprepbackend-production.up.railway.app/meeting/schedule",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `bearer ${token}`,
+          },
+          body: JSON.stringify(payload),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data) {
             console.log(data);
-            alert("Appointment Bookend Successfully");
+            alert("Appointment Booked Successfully");
           }
         })
         .catch((err) => alert(err));

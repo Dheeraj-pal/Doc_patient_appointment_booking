@@ -6,9 +6,12 @@ const { userModel } = require("../model/user.model");
 const meetingRouter = express.Router();
 
 //get all meetings
-meetingRouter.get("/", async (req, res) => {
+meetingRouter.get("/:id", async (req, res) => {
   try {
-    const meetings = await meetModel.find();
+    let id = req.params.id;
+    const meetings = await meetModel.find({
+      $or: [{ doctorId: id }, { patientId: id }],
+    });
     res.send(meetings);
   } catch (error) {
     res.status(500).send({ message: "cannot retrieve all meeting data" });
@@ -67,22 +70,14 @@ meetingRouter.post("/schedule", async (req, res) => {
 meetingRouter.put("/reschedule/:meetingId", async (req, res) => {
   try {
     const meetingId = req.params.meetingId;
-    const { startTime, endTime } = req.body;
+    const { dateAndTime } = req.body;
 
     const meeting = await meetModel.findById(meetingId);
     if (!meeting) {
       return res.status(404).json({ message: "Meeting not found" });
     }
 
-    if (
-      meeting.doctorId.toString() !== req.body.doctorId &&
-      meeting.patientId.toString() !== req.body.patientId
-    ) {
-      return res.status(403).json({ message: "Access denied" });
-    }
-
-    meeting.startTime = startTime;
-    meeting.endTime = endTime;
+    meeting.dateAndTime = dateAndTime;
     await meeting.save();
 
     res.json({ message: "Meeting rescheduled successfully" });
@@ -100,13 +95,6 @@ meetingRouter.delete("/:meetingId", async (req, res) => {
     const meeting = await meetModel.findById(meetingId);
     if (!meeting) {
       return res.status(404).json({ message: "Meeting not found" });
-    }
-
-    if (
-      meeting.doctorId.toString() !== req.body.doctorId &&
-      meeting.patientId.toString() !== req.body.patientId
-    ) {
-      return res.status(403).json({ message: "Access denied" });
     }
 
     await meetModel.findByIdAndDelete(meetingId);

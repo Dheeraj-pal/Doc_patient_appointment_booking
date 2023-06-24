@@ -43,11 +43,20 @@ document.getElementById("patient-form").addEventListener("submit", (e) => {
     .then((res) => res.json())
     .then((data) => {
       if (data) {
-        console.log(data);
         localStorage.setItem("user-detail", JSON.stringify(data));
+        if (data.message == "Login Successful") {
+          alert("Login Successful")
+          localStorage.removeItem("doc-detail");
+          window.location.href = "./index.html";
+        } else if (data.Error == "Wrong Credentials") {
+          return alert("wrong credentials");
+        }
       }
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      alert(err);
+    });
 });
 
 //Doctor Login
@@ -72,11 +81,13 @@ document.getElementById("doctor-form").addEventListener("submit", (e) => {
     .then((res) => res.json())
     .then((data) => {
       if (data) {
-        console.log(data);
         localStorage.setItem("doc-detail", JSON.stringify(data));
-        if (data) {
-          alert("login successful");
-          window.location.href = "../index.html";
+        if (data.message == "Login Successful") {
+          alert("Login Successful")
+          localStorage.removeItem("user-detail");
+          window.location.href = "./index.html";
+        } else if (data.message == "Doctor not found") {
+          return alert("wrong credentials");
         }
       }
     })
