@@ -29,4 +29,4 @@ Please note that the URLs provided are clickable links to access the respective 
 Presentation Link
 -----------------
 
-Google drive link --- [https://github.com/Dheeraj-pal/Doc_patient_appointment_booking/edit/main](https://github.com/Dheeraj-pal/Doc_patient_appointment_booking/edit/main)
+Google drive link: [https://github.com/Dheeraj-pal/Doc_patient_appointment_booking/edit/main](https://github.com/Dheeraj-pal/Doc_patient_appointment_booking/edit/main)
